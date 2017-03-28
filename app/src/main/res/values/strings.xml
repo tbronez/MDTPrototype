@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MDTPrototype</string>
+    <string name="hello_world">Hello World!</string>
+    <string name="heart_rate_loading">Heart Rate...</string>
+    <string name="press">Press to log symptom</string>
+    <string name="menu">Menu</string>
+</resources>

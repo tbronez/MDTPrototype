@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.wearable.view.BoxInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.tessa.mdtprototype.MainActivity"
+    tools:deviceIds="wear"
+    android:background="@color/white">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/menu"
+        android:textSize="@dimen/title_text"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/dark_grey"/>
+    <ImageButton
+        android:src="@drawable/clipboard"
+        android:onClick="onClipboardClick"
+        android:layout_width="@dimen/confirmation_overlay_image_size"
+        android:layout_height="@dimen/confirmation_overlay_image_size"
+        android:scaleType="fitCenter"
+        android:layout_above="@+id/hrButton"
+        android:layout_alignParentLeft="true"
+        android:background="@null"
+        android:id="@+id/clipboardButton" />
+    <ImageButton
+        android:src="@drawable/symptom"
+        android:onClick="onSymptomClick"
+        android:layout_width="@dimen/confirmation_overlay_image_size"
+        android:layout_height="@dimen/confirmation_overlay_image_size"
+        android:scaleType="fitCenter"
+        android:layout_above="@+id/hrButton"
+        android:layout_alignParentRight="true"
+        android:background="@null"
+        android:id="@+id/symptomButton" />
+    <ImageButton
+        android:src="@drawable/heartrate"
+        android:onClick="onHRClick"
+        android:layout_width="@dimen/confirmation_overlay_image_size"
+        android:layout_height="@dimen/confirmation_overlay_image_size"
+        android:scaleType="fitCenter"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:background="@null"
+        android:id="@+id/hrButton" />
+
+</RelativeLayout>
+</android.support.wearable.view.BoxInsetLayout>
