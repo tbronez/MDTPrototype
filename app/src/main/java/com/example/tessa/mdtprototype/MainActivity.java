@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.wearable.activity.WearableActivity;
 import android.support.wearable.view.BoxInsetLayout;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -33,14 +34,18 @@ public class MainActivity extends WearableActivity {
 
         // if (service is not started) {
             // startService(HeartRateData intent) }
-        Intent intent = new Intent(this, HeartRateData.class);
+        Intent intent = new Intent(this, FakeHeartRateData.class);
+        intent.setAction("startSensor");
         startService(intent);
+
+        Log.d("tag", "Started Main");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Intent intent = new Intent(this, HeartRateData.class);
+        Intent intent = new Intent(this, FakeHeartRateData.class);
+        intent.setAction("startSensor");
         startService(intent);
     }
 

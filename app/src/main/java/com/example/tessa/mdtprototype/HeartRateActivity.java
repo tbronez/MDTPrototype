@@ -36,12 +36,16 @@ public class HeartRateActivity extends WearableActivity {
         hrTextView = (TextView) findViewById(R.id.hrTextView);
         debuggingText = (TextView) findViewById(R.id.debuggingText);
 
+        Intent dataIntent = new Intent(this, FakeHeartRateData.class);
+        dataIntent.setAction("getData");
+        startService(dataIntent);
         broadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 updateHR(intent);
             }
         };
+        registerReceiver(broadcastReceiver, new IntentFilter("heartrate"));
 
         /*
         mSensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);

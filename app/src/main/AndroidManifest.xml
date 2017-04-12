@@ -29,12 +29,14 @@
         </activity>
         <activity android:name=".HeartRateActivity" />
         <activity android:name=".ClipboardActivity" />
-        <activity android:name=".SymptomActivity"></activity>
+        <activity android:name=".SymptomActivity" />
+
         <service
             android:name=".HeartRateData"
-            android:exported="false"
-            />
+            android:exported="false" />
+        <service
+            android:name=".FakeHeartRateData"
+            android:exported="false"></service>
     </application>
-
 
 </manifest>

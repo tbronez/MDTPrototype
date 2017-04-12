@@ -25,7 +25,7 @@ public class HeartRateData extends IntentService implements SensorEventListener 
     public Sensor mHeartRateSensor;
     public int heartrate;
     public int accuracy;
-    public Intent intent = new Intent("heartrate");
+    public Intent mintent = new Intent("heartrate");
 
 
     public HeartRateData() {
@@ -51,6 +51,7 @@ public class HeartRateData extends IntentService implements SensorEventListener 
         //else
             //No sensor
 
+
     }
 
     @Override
@@ -64,9 +65,9 @@ public class HeartRateData extends IntentService implements SensorEventListener 
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
         }
-        intent.putExtra("time", new Date().toLocaleString());
-        intent.putExtra("heartrate", heartrate);
-        sendBroadcast(intent);
+        mintent.putExtra("time", new Date().toLocaleString());
+        mintent.putExtra("heartrate", heartrate);
+        sendBroadcast(mintent);
     }
 
     @Override
@@ -75,7 +76,7 @@ public class HeartRateData extends IntentService implements SensorEventListener 
     }
 
 
-    /* extends Service instead of IntentService
+    /* ]extends Service instead of IntentService
     @Override
     public void onCreate() {
         super.onCreate();

@@ -15,33 +15,13 @@
     tools:context="com.example.tessa.mdtprototype.ClipboardActivity">
 
 
-    <TextView
-        android:id="@+id/summaryTextView"
-        android:text=""
-        android:textSize="@dimen/title_text"
-        android:textColor="@color/dark_grey"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ListView
+        android:id="@+id/clipboardListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:dividerHeight="0.1dp"
+        android:background="@color/dark_grey"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
-
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:scaleType="fitCenter"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/symptom"
-        android:layout_alignParentTop="true"
-        android:id="@+id/imageView"
-        android:layout_above="@+id/summaryTextView" />
-
-    <Button
-        android:id="@+id/clearButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/summaryTextView"
-        android:layout_centerHorizontal="true"
-        android:text="Clear Symptom History"
-        android:onClick="clearSymptomHistory"/>
-
+        />
 </RelativeLayout>

@@ -1,10 +1,14 @@
 package com.example.tessa.mdtprototype;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.wearable.activity.WearableActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -13,13 +17,21 @@ import android.widget.TextView;
 public class SymptomActivity extends DataSummary {
 
     public int heartrate;
+    private BroadcastReceiver broadcastReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_symptom);
         setAmbientEnabled();
-        //heartrate = 60; //TAKE THIS OUT
+        broadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                Log.d("tag","Got the data");
+                readyToLog(intent);
+            }
+        };
+        registerReceiver(broadcastReceiver, new IntentFilter("heartrate"));
     }
 
     public void backToMenu(View v) {
@@ -33,13 +45,40 @@ public class SymptomActivity extends DataSummary {
     public void logSymptom(View v) {
         //when logSymptom is called, get the last recorded heart rate
         //boolean symptomatic = (heartrate < 50);
-        super.addToSymptomCount();
-        int newCount = super.getSymptomCount();
-        String newCountString = ""+newCount;
-        TextView symptomCount = (TextView) findViewById(R.id.symptomCount);
-        if (newCount==1) {
-            symptomCount.setText(newCountString+" symptom logged");
-        } else symptomCount.setText(newCountString+" symptoms logged");
+
+        Intent dataIntent = new Intent(this, FakeHeartRateData.class);
+        dataIntent.setAction("getData");
+        startService(dataIntent);
+
+
+
+    }
+
+    public void readyToLog(Intent intent) {
+        String time = intent.getStringExtra("time");
+        heartrate = intent.getIntExtra("heartrate",1);
+        String data = time+": "+heartrate;
+        super.addToSymptomCount(data);
+    }
+
+    public void clearLog(View v) {
+        super.clearSymptomCount();
+        Log.d("SymptomActivity","clearLog");
+    }
+
+    protected void onResume() {
+        super.onResume();
+        //mSensorManager.registerListener(this, mHeartRateSensor, SensorManager.SENSOR_DELAY_FASTEST);
+        //debuggingText.setText("Reregistered");
+        registerReceiver(broadcastReceiver, new IntentFilter("heartrate"));
+
+    }
+
+    protected void onPause() {
+        super.onPause();
+        //mSensorManager.unregisterListener(this);
+        //debuggingText.setText("Unregistered");
+        unregisterReceiver(broadcastReceiver);
     }
 
 }

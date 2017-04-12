@@ -29,4 +29,13 @@
         android:text="@string/press"
         android:layout_centerInParent="true"/>
 
+    <Button
+        android:id="@+id/clearButton"
+        android:text="Clear log"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pushButton"
+        android:layout_alignEnd="@+id/pushButton"
+        android:onClick="clearLog" />
+
 </RelativeLayout>
