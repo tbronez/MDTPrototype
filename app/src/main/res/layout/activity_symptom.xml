@@ -31,7 +31,7 @@
 
     <Button
         android:id="@+id/clearButton"
-        android:text="Clear the log"
+        android:text="Clear te log"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/pushButton"
