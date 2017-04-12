@@ -6,22 +6,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/white"
     android:clickable="true"
     android:onClick="backToMenu"
     tools:context="com.example.tessa.mdtprototype.ClipboardActivity">
 
+<!--    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"-->
+
+
+    <TextView
+        android:text="Average"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/dark_grey"
+        android:textSize="30sp"
+        android:id="@+id/textView5"
+        android:onClick="backToMenu" />
+
+    <TextView
+        android:text="55 BPM"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/dark_grey"
+        android:id="@+id/textView6"
+        android:onClick="backToMenu"
+        android:layout_below="@+id/textView5"
+        android:layout_centerHorizontal="true" />
 
     <ListView
         android:id="@+id/clipboardListView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="500dp"
         android:dividerHeight="0.1dp"
         android:background="@color/dark_grey"
-        android:layout_centerVertical="true"
+        android:layout_centerVertical="false"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
         />
 </RelativeLayout>
