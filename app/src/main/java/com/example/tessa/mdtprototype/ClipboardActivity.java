@@ -39,7 +39,9 @@ public class ClipboardActivity extends SymptomActivity {
         viewFlipper = (ViewFlipper) this.findViewById(R.id.viewFlipper);
         //writeSummary();
         //for (int counter = 1;counter<=4;counter++) {
-//        displayView();//
+        for (int counter = 1;counter<=4;counter++) {
+            displayView();//
+        }
         //}
     }
 
@@ -82,14 +84,12 @@ public class ClipboardActivity extends SymptomActivity {
         LayoutInflater inflater = (LayoutInflater) this //creates layout inflator
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.calendar_layout, null); //creates new view by inflating testlayout
-        for (int i = 1;i<=4;i++) {
-            viewFlipper.addView(view); //adds inflated view to viewflipper
-            TextView heart_rate = (TextView) view.findViewById(R.id.heart_rate_variable);
+        viewFlipper.addView(view); //adds inflated view to viewflipper
+        TextView heart_rate = (TextView) view.findViewById(R.id.heart_rate_variable);
             //ArrayList<String> calendar_list = super.getSymptomCount();
             //heart_rate.setText(calendar_list.get(i));
-            heart_rate.setText(String.format("%d",initial_count));
-            initial_count++;
-        }
+        heart_rate.setText(String.format("%d",initial_count));
+        initial_count++;
     }
 
     public void onButtonDown (View v){
