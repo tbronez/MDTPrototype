@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src ="@drawable/calendar_template2"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:id="@+id/calendar"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="9/27"
+        android:gravity="center"
+        android:textColor="@color/dark_grey"
+        android:textSize="24sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="5dp"
+        android:id="@+id/date"/>
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/heart"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="40dp"
+        android:id="@+id/heart"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="35sp"
+        android:text="50"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:layout_alignBottom="@+id/symptom"
+        android:layout_alignStart="@+id/heart"
+        android:layout_marginStart="13dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/heart_rate_variable"/>
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/crossedhands"
+        android:id="@+id/symptom"
+        android:layout_alignBottom="@+id/heart"
+        android:layout_toEndOf="@+id/heart" />
+
+</RelativeLayout>
