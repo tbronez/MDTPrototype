@@ -2,10 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
 
-    <ImageView
+<!--    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src ="@drawable/calendar_template2"
@@ -52,6 +53,14 @@
         android:src="@drawable/crossedhands"
         android:id="@+id/symptom"
         android:layout_alignBottom="@+id/heart"
-        android:layout_toEndOf="@+id/heart" />
+        android:layout_toEndOf="@+id/heart" />-->
 
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/black"
+        android:id="@+id/heart_rate_variable" />
 </RelativeLayout>
