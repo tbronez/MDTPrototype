@@ -33,15 +33,15 @@
         android:layout_alignParentRight="true"
         android:background="@null"
         android:id="@+id/symptomButton" />
-    <ImageButton
-        android:src="@drawable/heartrate"
+    <Button
         android:onClick="onHRClick"
+        android:text="HR"
         android:layout_width="@dimen/confirmation_overlay_image_size"
         android:layout_height="@dimen/confirmation_overlay_image_size"
         android:scaleType="fitCenter"
+        android:background="@color/dark_grey"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:background="@null"
         android:id="@+id/hrButton" />
 
 </RelativeLayout>

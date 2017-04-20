@@ -23,11 +23,11 @@ public class DataSummary extends WearableActivity {
     private String mFilename = "Symptom_Count";
 
     public ArrayList<String> getSymptomCount() {
-    //public String getSymptomCount() {
+        //public String getSymptomCount() {
 
         ArrayList<String> dataArrayList = new ArrayList<>();
         try {
-            Log.d("tag","getSymptomCount");
+            Log.d("tag", "getSymptomCount");
             FileInputStream fis = openFileInput(mFilename);
             InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
             BufferedReader bufferedReader = new BufferedReader(isr);
@@ -35,22 +35,20 @@ public class DataSummary extends WearableActivity {
             String line = "";
 
             int c;
-            String temp="";
-            while( (c = fis.read()) != -1){
-                temp = Character.toString((char)c);
+            String temp = "";
+            while ((c = fis.read()) != -1) {
+                temp = Character.toString((char) c);
                 if (temp.equals(";")) {
                     dataArrayList.add(line);
                     line = "";
-                } else line = line+temp;
+                } else line = line + temp;
 
             }
 
 
-        }
-        catch(FileNotFoundException e){
+        } catch (FileNotFoundException e) {
 
-        }
-        catch(IOException ex) {
+        } catch (IOException ex) {
 
         }
         return dataArrayList;
@@ -62,23 +60,21 @@ public class DataSummary extends WearableActivity {
         dataArrayList.add(newData);
 //        dataArrayList = dataArrayList+" "+newData;
         String dataString = "";
-        for (int i = 0; i<dataArrayList.size(); i++) {
-            dataString = dataString+dataArrayList.get(i)+";";
+        for (int i = 0; i < dataArrayList.size(); i++) {
+            dataString = dataString + dataArrayList.get(i) + ";";
         }
-        Log.d("Storing",dataString);
+        Log.d("Storing", dataString);
 
         try {
             FileOutputStream fos = openFileOutput(mFilename, Context.MODE_PRIVATE);
             fos.write(dataString.getBytes());
             fos.close();
-            Log.d("addToSymptomCount","succeeded");
-        }
-        catch(FileNotFoundException e){
-            Log.d(DataSummary.class.getName(),"File not found");
-        }
-        catch(IOException ex) {
+            Log.d("addToSymptomCount", "succeeded");
+        } catch (FileNotFoundException e) {
+            Log.d(DataSummary.class.getName(), "File not found");
+        } catch (IOException ex) {
             ex.printStackTrace();
-            Log.d(DataSummary.class.getName(),"exception");
+            Log.d(DataSummary.class.getName(), "exception");
         }
 
     }
@@ -87,11 +83,9 @@ public class DataSummary extends WearableActivity {
         try {
             FileInputStream fis = openFileInput(mFilename);
             deleteFile(mFilename);
-        }
-        catch(FileNotFoundException e){
+        } catch (FileNotFoundException e) {
 
-        }
-        catch(IOException ex) {
+        } catch (IOException ex) {
 
         }
     }

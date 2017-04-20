@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.wearable.activity.WearableActivity;
 import android.support.wearable.view.BoxInsetLayout;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageButton;
@@ -35,6 +36,10 @@ public class HeartRateActivity extends WearableActivity {
 
         hrTextView = (TextView) findViewById(R.id.hrTextView);
         debuggingText = (TextView) findViewById(R.id.debuggingText);
+
+        Intent intent = new Intent(this, FakeHeartRateData.class);
+        intent.setAction("startSensor");
+        startService(intent);
 
         Intent dataIntent = new Intent(this, FakeHeartRateData.class);
         dataIntent.setAction("getData");
@@ -115,7 +120,11 @@ public class HeartRateActivity extends WearableActivity {
         super.onResume();
         //mSensorManager.registerListener(this, mHeartRateSensor, SensorManager.SENSOR_DELAY_FASTEST);
         //debuggingText.setText("Reregistered");
+        Intent intent = new Intent(this, FakeHeartRateData.class);
+        intent.setAction("startSensor");
+        startService(intent);
         registerReceiver(broadcastReceiver, new IntentFilter("heartrate"));
+
 
     }
 
@@ -127,11 +136,11 @@ public class HeartRateActivity extends WearableActivity {
     }
 
     public void backToMenu(View v) {
+        Log.d("HeartRateActivity","backToMenu");
         Intent openMainActivity= new Intent(HeartRateActivity.this, MainActivity.class);
-        openMainActivity.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        //openMainActivity.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(openMainActivity);
 
-        finish();
     }
 
 }
