@@ -42,6 +42,16 @@ public class SymptomActivity extends DataSummary {
         finish();
     }
 
+    public void toClipboard() {
+        Intent openClipboardActivity= new Intent(SymptomActivity.this, ClipboardActivity.class);
+        //openClipboardActivity.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        openClipboardActivity.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(openClipboardActivity);
+        this.overridePendingTransition(0,0);
+
+        finish();
+    }
+
     public void logSymptom(View v) {
         //when logSymptom is called, get the last recorded heart rate
         //boolean symptomatic = (heartrate < 50);
@@ -50,8 +60,6 @@ public class SymptomActivity extends DataSummary {
         dataIntent.setAction("getData");
         startService(dataIntent);
 
-
-
     }
 
     public void readyToLog(Intent intent) {
@@ -59,6 +67,7 @@ public class SymptomActivity extends DataSummary {
         heartrate = intent.getIntExtra("heartrate",1);
         String data = time+": "+heartrate;
         super.addToSymptomCount(data);
+        toClipboard();
     }
 
     public void clearLog(View v) {

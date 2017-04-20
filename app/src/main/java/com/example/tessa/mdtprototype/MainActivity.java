@@ -34,13 +34,18 @@ public class MainActivity extends WearableActivity {
         setContentView(R.layout.activity_main);
         setAmbientEnabled();
 
+        Intent openIntent = new Intent(this,HeartRateActivity.class);
+        //openIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(openIntent);
+
         mContainerView = (BoxInsetLayout) findViewById(R.id.container);
         hrButton = (Button) findViewById(R.id.hrButton);
 
-        // if (service is not started) {
-            // startService(HeartRateData intent) }
-
         Log.d("tag", "Started Main");
+
+        Intent startHeart = new Intent(this,FakeHeartRateData.class);
+        startHeart.setAction("startSensor");
+        startService(startHeart);
 
         Intent dataIntent = new Intent(this, FakeHeartRateData.class);
         dataIntent.setAction("getData");
@@ -73,19 +78,16 @@ public class MainActivity extends WearableActivity {
         Intent openIntent = new Intent(this,HeartRateActivity.class);
         openIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(openIntent);
-        finish();
     }
 
     public void onClipboardClick(View v){
         Intent openIntent = new Intent(this,ClipboardActivity.class);
         startActivity(openIntent);
-        finish();
     }
 
     public void onSymptomClick(View v){
         Intent openIntent = new Intent(this,SymptomActivity.class);
         startActivity(openIntent);
-        finish();
     }
 
     public void updateHR(Intent intent) {

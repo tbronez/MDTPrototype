@@ -12,22 +12,11 @@
     android:clickable="true"
     android:onClick="backToMenu"
     tools:context="com.example.tessa.mdtprototype.HeartRateActivity">
-        <TextView
-            android:id="@+id/hrTextView"
+        <DigitalClock
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:textAlignment="center"
-            android:textSize="@dimen/heart_rate_loading_text"
             android:textColor="@color/dark_grey"
-            android:text="Loading..." />
-        <TextView
-            android:id="@+id/debuggingText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/hrTextView"
-            android:textAlignment="center"
-            android:layout_centerHorizontal="true"
-            android:textColor="@color/dark_grey"
-            android:text=""/>
+            android:textSize="@dimen/title_text"
+            android:layout_centerInParent="true"/>
+
 </RelativeLayout>

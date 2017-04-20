@@ -20,22 +20,21 @@ import android.widget.TextView;
 
 public class HeartRateActivity extends WearableActivity {
 
-    private TextView hrTextView;
-    private TextView debuggingText;
+    //private TextView hrTextView;
     //private SensorManager mSensorManager;
     //private Sensor mHeartRateSensor;
-    private int acc;
-    private BroadcastReceiver broadcastReceiver;
+    //private int acc;
+    //private BroadcastReceiver broadcastReceiver;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_heart_rate);
-        setAmbientEnabled();
+        //setAmbientEnabled();
 
+        /*
         hrTextView = (TextView) findViewById(R.id.hrTextView);
-        debuggingText = (TextView) findViewById(R.id.debuggingText);
 
         Intent intent = new Intent(this, FakeHeartRateData.class);
         intent.setAction("startSensor");
@@ -51,6 +50,7 @@ public class HeartRateActivity extends WearableActivity {
             }
         };
         registerReceiver(broadcastReceiver, new IntentFilter("heartrate"));
+        */
 
         /*
         mSensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
@@ -63,7 +63,7 @@ public class HeartRateActivity extends WearableActivity {
             debuggingText.setText("No sensor");
         */
     }
-
+/*
     public void updateHR(Intent intent) {
         String time = intent.getStringExtra("time");
         int hr = intent.getIntExtra("heartrate",1);
@@ -79,7 +79,7 @@ public class HeartRateActivity extends WearableActivity {
         hrTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.large_text));
         hrTextView.setText(hrString);
     }
-
+*/
     /*
     public void onSensorChanged(SensorEvent event) {
         int hr = (int)event.values[0];
@@ -120,10 +120,10 @@ public class HeartRateActivity extends WearableActivity {
         super.onResume();
         //mSensorManager.registerListener(this, mHeartRateSensor, SensorManager.SENSOR_DELAY_FASTEST);
         //debuggingText.setText("Reregistered");
-        Intent intent = new Intent(this, FakeHeartRateData.class);
-        intent.setAction("startSensor");
-        startService(intent);
-        registerReceiver(broadcastReceiver, new IntentFilter("heartrate"));
+        //Intent intent = new Intent(this, FakeHeartRateData.class);
+        //intent.setAction("startSensor");
+        //startService(intent);
+        //registerReceiver(broadcastReceiver, new IntentFilter("heartrate"));
 
 
     }
@@ -132,14 +132,15 @@ public class HeartRateActivity extends WearableActivity {
         super.onPause();
         //mSensorManager.unregisterListener(this);
         //debuggingText.setText("Unregistered");
-        unregisterReceiver(broadcastReceiver);
+        //unregisterReceiver(broadcastReceiver);
     }
 
     public void backToMenu(View v) {
         Log.d("HeartRateActivity","backToMenu");
         Intent openMainActivity= new Intent(HeartRateActivity.this, MainActivity.class);
-        //openMainActivity.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        openMainActivity.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(openMainActivity);
+        finish();
 
     }
 

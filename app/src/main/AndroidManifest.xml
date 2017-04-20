@@ -19,8 +19,6 @@
 
         <activity
             android:name=".MainActivity">
-        </activity>
-        <activity android:name=".HeartRateActivity">
             android:label="@string/app_name"
             android:theme="@android:style/Theme.DeviceDefault.Light">
             <intent-filter>
@@ -28,7 +26,9 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter> />
-            </activity>
+        </activity>
+        <activity android:name=".HeartRateActivity">
+        </activity>
         <activity android:name=".ClipboardActivity" />
         <activity android:name=".SymptomActivity" />
 
