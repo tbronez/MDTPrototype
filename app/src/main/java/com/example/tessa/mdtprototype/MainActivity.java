@@ -24,7 +24,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 public class MainActivity extends WearableActivity {
 
     private BoxInsetLayout mContainerView;
-    private Button hrButton;
+    private TextView hrButton;
     private BroadcastReceiver broadcastReceiver;
 
 
@@ -39,7 +39,7 @@ public class MainActivity extends WearableActivity {
         startActivity(openIntent);
 
         mContainerView = (BoxInsetLayout) findViewById(R.id.container);
-        hrButton = (Button) findViewById(R.id.hrButton);
+        hrButton = (TextView) findViewById(R.id.hrButton);
 
         Log.d("tag", "Started Main");
 
