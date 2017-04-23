@@ -11,59 +11,89 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp">
+        android:layout_height="match_parent">
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:background="@android:color/darker_gray"
+            android:layout_height="4.5dp"
+            android:background="@color/line_gray"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:id="@+id/view8"/>
 
         <View
-            android:layout_width="3dp"
-            android:layout_height="80dp"
+            android:layout_width="4.5dp"
+            android:layout_height="match_parent"
             android:id="@+id/view6"
-            android:background="@android:color/darker_gray"
+            android:background="@color/line_gray"
             android:layout_alignTop="@+id/view8"
             android:layout_centerHorizontal="true" />
 
         <ImageView
             android:src="@drawable/crossedhands"
             android:onClick="onSymptomClick"
-            android:layout_width="@dimen/confirmation_overlay_image_size"
-            android:layout_height="@dimen/confirmation_overlay_image_size"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:scaleType="fitCenter"
             android:background="@null"
             android:id="@+id/symptomButton"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_below="@+id/view8"
+            android:layout_toStartOf="@+id/view6"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"/>
 
         <ImageView
-            android:src="@drawable/notepadpicture"
+            android:src = "@drawable/notepadpicture"
             android:onClick="onClipboardClick"
-            android:layout_width="@dimen/confirmation_overlay_image_size"
-            android:layout_height="@dimen/confirmation_overlay_image_size"
-            android:scaleType="fitCenter"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:background="@null"
             android:id="@+id/clipboardButton"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true" />
+            android:layout_below="@+id/view8"
+            android:layout_toEndOf="@+id/view6"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"/>
 
         <TextView
             android:onClick="onHRClick"
             android:text="HR"
-            android:textSize="40sp"
+            android:textSize="55sp"
             android:textColor="@color/dark_grey"
             android:layout_width="@dimen/confirmation_overlay_image_size"
             android:layout_height="@dimen/confirmation_overlay_image_size"
-            android:scaleType="fitCenter"
             android:gravity="center"
             android:id="@+id/hrButton"
+            android:layout_above="@+id/view8"
+            android:layout_alignStart="@+id/symptomButton"
+            android:layout_marginStart="1dp" />
+
+        <TextView
+            android:text="BPM"
+            android:textSize="20sp"
+            android:textColor="@color/dark_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:id="@+id/BPM"
+            android:layout_alignBaseline="@+id/hrButton"
+            android:layout_alignBottom="@+id/hrButton"
+            android:layout_toEndOf="@+id/hrButton" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/heart"
+            android:id="@+id/heart_image"
+            android:layout_above="@+id/BPM"
+            android:layout_toEndOf="@+id/hrButton" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="105dp"
+            android:onClick="onHRClick"
+            android:id = "@+id/upper_half_main_activity"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_alignParentStart="true" />
 
     </RelativeLayout>
 </android.support.wearable.view.BoxInsetLayout>

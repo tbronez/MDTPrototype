@@ -18,8 +18,8 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:background="@android:color/darker_gray"
+        android:layout_height="4dp"
+        android:background="@color/line_gray"
         android:layout_centerVertical="true"
         android:id="@+id/center_line"/>
 
@@ -27,8 +27,8 @@
         android:layout_width="match_parent"
         android:layout_height="600dp"
         android:onClick="backToMenu"
-        android:layout_below="@+id/center_line"
-        android:id = "@+id/back_touch"/>
+        android:id = "@+id/back_touch"
+        android:layout_below="@+id/center_line" />
 
     <Button
         android:id="@+id/clearButton"
@@ -41,7 +41,7 @@
 
     <TextView
         android:id="@+id/pushButton"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
@@ -54,6 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text= "date goes here"
+        android:textSize="20sp"
         android:id="@+id/last_date"
         android:textColor="@color/dark_grey"
         android:layout_above="@+id/center_line"
@@ -63,7 +64,7 @@
     <TextView
         android:id="@+id/go_back"
         android:onClick="backToMenu"
-        android:textSize="20sp"
+        android:textSize="40sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
@@ -77,7 +78,8 @@
         android:onClick="logSymptom"
         android:id = "@+id/log_discomfort_touch"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/last_date" />
 
 
 </RelativeLayout>

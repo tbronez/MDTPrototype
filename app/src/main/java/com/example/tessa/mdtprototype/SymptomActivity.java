@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Vibrator;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -55,7 +56,8 @@ public class SymptomActivity extends DataSummary {
     public void logSymptom(View v) {
         //when logSymptom is called, get the last recorded heart rate
         //boolean symptomatic = (heartrate < 50);
-
+        //Vibrator vb = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
+        //vb.vibrate(100);
         Intent dataIntent = new Intent(this, FakeHeartRateData.class);
         dataIntent.setAction("getData");
         startService(dataIntent);

@@ -12,34 +12,24 @@
     tools:context="com.example.tessa.mdtprototype.ClipboardActivity">
 
 
-    <TextView
-        android:text="Average"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/dark_grey"
-        android:textSize="30sp"
-        android:id="@+id/textView5"
-        android:onClick="backToMenu" />
-
-    <TextView
-        android:text="55 BPM"
-        android:textSize="20sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/dark_grey"
-        android:id="@+id/textView6"
-        android:onClick="backToMenu"
-        android:layout_below="@+id/textView5"
-        android:layout_centerHorizontal="true" />
-
     <ListView
         android:id="@+id/clipboardListView"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="150dp"
         android:dividerHeight="0.1dp"
         android:background="@color/dark_grey"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:text="Discomfort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/dark_grey"
+        android:textSize="30sp"
+        android:id="@+id/textView5"
+        android:onClick="backToMenu"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp" />
 </RelativeLayout>
