@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SymptomActivity extends DataSummary {
 
@@ -58,6 +59,7 @@ public class SymptomActivity extends DataSummary {
         //boolean symptomatic = (heartrate < 50);
         Vibrator vb = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
         vb.vibrate(200);
+        Toast.makeText(this, "Symptom Logged!", Toast.LENGTH_LONG).show();
         Intent dataIntent = new Intent(this, FakeHeartRateData.class);
         dataIntent.setAction("getData");
         startService(dataIntent);
