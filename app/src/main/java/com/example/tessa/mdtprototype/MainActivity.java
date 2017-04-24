@@ -35,7 +35,7 @@ public class MainActivity extends WearableActivity {
         setAmbientEnabled();
 
         Intent openIntent = new Intent(this,HeartRateActivity.class);
-        //openIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        openIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(openIntent);
 
         mContainerView = (BoxInsetLayout) findViewById(R.id.container);
@@ -77,16 +77,19 @@ public class MainActivity extends WearableActivity {
     public void onHRClick(View v){
         Intent openIntent = new Intent(this,HeartRateActivity.class);
         openIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        openIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(openIntent);
     }
 
     public void onClipboardClick(View v){
         Intent openIntent = new Intent(this,ClipboardActivity.class);
+        openIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(openIntent);
     }
 
     public void onSymptomClick(View v){
         Intent openIntent = new Intent(this,SymptomActivity.class);
+        openIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(openIntent);
     }
 

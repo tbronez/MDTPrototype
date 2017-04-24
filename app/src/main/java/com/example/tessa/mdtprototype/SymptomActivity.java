@@ -19,7 +19,10 @@ import android.widget.Toast;
 public class SymptomActivity extends DataSummary {
 
     public int heartrate;
+    public String time = "";
+    public String data = "";
     private BroadcastReceiver broadcastReceiver;
+    TextView preview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +33,17 @@ public class SymptomActivity extends DataSummary {
             @Override
             public void onReceive(Context context, Intent intent) {
                 Log.d("tag","Got the data");
-                readyToLog(intent);
+                updateDisplay(intent);
             }
         };
         registerReceiver(broadcastReceiver, new IntentFilter("heartrate"));
+        Intent dataIntent = new Intent(this, FakeHeartRateData.class);
+        dataIntent.setAction("getData");
+        startService(dataIntent);
+        preview = (TextView) findViewById(R.id.last_date);
     }
+
+
 
     public void backToMenu(View v) {
         Intent openMainActivity= new Intent(SymptomActivity.this, MainActivity.class);
@@ -55,23 +64,24 @@ public class SymptomActivity extends DataSummary {
     }
 
     public void logSymptom(View v) {
+        //Called when user clicks the "log discomfort" view
         //when logSymptom is called, get the last recorded heart rate
         //boolean symptomatic = (heartrate < 50);
+        super.addToSymptomCount(data);
         Vibrator vb = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
         vb.vibrate(200);
         Toast.makeText(this, "Symptom Logged!", Toast.LENGTH_LONG).show();
-        Intent dataIntent = new Intent(this, FakeHeartRateData.class);
-        dataIntent.setAction("getData");
-        startService(dataIntent);
+        toClipboard();
+
 
     }
 
-    public void readyToLog(Intent intent) {
-        String time = intent.getStringExtra("time");
+    public void updateDisplay(Intent intent) {
+        unregisterReceiver(broadcastReceiver);
+        time = intent.getStringExtra("time");
         heartrate = intent.getIntExtra("heartrate",1);
-        String data = time+": "+heartrate;
-        super.addToSymptomCount(data);
-        toClipboard();
+        data = time+": "+heartrate;
+        preview.setText(data);
     }
 
     public void clearLog(View v) {
@@ -91,7 +101,13 @@ public class SymptomActivity extends DataSummary {
         super.onPause();
         //mSensorManager.unregisterListener(this);
         //debuggingText.setText("Unregistered");
-        unregisterReceiver(broadcastReceiver);
+        try {
+            unregisterReceiver(broadcastReceiver);
+        }
+        catch (IllegalArgumentException e) {
+            Log.d(SymptomActivity.class.getName(), "Receiver not registered");
+        }
+
     }
 
 }

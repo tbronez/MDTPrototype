@@ -21,6 +21,7 @@ public class FakeHeartRateData extends Service {
         super("FakeHeartRateData");
     }*/
     public int fakeHeartRate=60;
+    public Boolean notStarted = true;
     public Intent intent2 = new Intent("heartrate");
     private Timer timer = new Timer();
     private static final long UPDATE_INTERVAL = 2 * 1000;
@@ -42,8 +43,10 @@ public class FakeHeartRateData extends Service {
 
         if (intent.getAction().equals("startSensor")) {
             Log.d("tag","Intent to startSensor");
-            startHR();
-            // start timer
+            if (notStarted) {
+                notStarted = false;
+                startHR();
+            }
         } else if (intent.getAction().equals("getData")) {
             intent2.putExtra("heartrate",fakeHeartRate);
             intent2.putExtra("time", new Date().toLocaleString());
