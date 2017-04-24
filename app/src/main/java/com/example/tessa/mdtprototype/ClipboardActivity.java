@@ -74,6 +74,7 @@ public class ClipboardActivity extends SymptomActivity {
         Intent openMainActivity= new Intent(ClipboardActivity.this, MainActivity.class);
         openMainActivity.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(openMainActivity);
+        overridePendingTransition(0, 0);
 
         finish();
     }

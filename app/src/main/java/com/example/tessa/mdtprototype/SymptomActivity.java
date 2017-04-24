@@ -49,6 +49,7 @@ public class SymptomActivity extends DataSummary {
         Intent openMainActivity= new Intent(SymptomActivity.this, MainActivity.class);
         openMainActivity.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(openMainActivity);
+        this.overridePendingTransition(0, 0);
 
         finish();
     }
@@ -56,7 +57,6 @@ public class SymptomActivity extends DataSummary {
     public void toClipboard() {
         Intent openClipboardActivity= new Intent(SymptomActivity.this, ClipboardActivity.class);
         //openClipboardActivity.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-        openClipboardActivity.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(openClipboardActivity);
         this.overridePendingTransition(0,0);
 

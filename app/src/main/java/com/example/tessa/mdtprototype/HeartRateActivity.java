@@ -139,8 +139,8 @@ public class HeartRateActivity extends WearableActivity {
         Log.d("HeartRateActivity","backToMenu");
         Intent openMainActivity= new Intent(HeartRateActivity.this, MainActivity.class);
         openMainActivity.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-        openMainActivity.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(openMainActivity);
+        overridePendingTransition(0, 0);
         finish();
 
     }
