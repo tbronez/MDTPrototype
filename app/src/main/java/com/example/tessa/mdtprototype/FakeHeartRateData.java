@@ -10,6 +10,9 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.logging.Handler;
 
 
 public class FakeHeartRateData extends Service {
@@ -17,9 +20,11 @@ public class FakeHeartRateData extends Service {
     /*public FakeHeartRateData() {
         super("FakeHeartRateData");
     }*/
-    public int fakeHeartRate=0;
-    //public Intent mintent = new Intent("fakeHeartRate");
+    public int fakeHeartRate=60;
     public Intent intent2 = new Intent("heartrate");
+    private Timer timer = new Timer();
+    private static final long UPDATE_INTERVAL = 2 * 1000;
+    private static final long DELAY_INTERVAL = 0;
 
     @Override
     public void onCreate() {
@@ -37,7 +42,7 @@ public class FakeHeartRateData extends Service {
 
         if (intent.getAction().equals("startSensor")) {
             Log.d("tag","Intent to startSensor");
-            fakeHeartRate = 60;
+            startHR();
             // start timer
         } else if (intent.getAction().equals("getData")) {
             intent2.putExtra("heartrate",fakeHeartRate);
@@ -52,6 +57,27 @@ public class FakeHeartRateData extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
+    }
+
+    public void startHR() {
+
+        timer.scheduleAtFixedRate(
+                new TimerTask() {
+                    public void run() {
+                        if (fakeHeartRate>30) {
+                            fakeHeartRate = fakeHeartRate - 1;
+                        } else {
+                            fakeHeartRate = fakeHeartRate + 2;
+                        }
+                        intent2.putExtra("time", new Date().toLocaleString());
+                        intent2.putExtra("heartrate", fakeHeartRate);
+                        sendBroadcast(intent2);
+                    }
+                },
+                DELAY_INTERVAL,
+                UPDATE_INTERVAL
+        );
+
     }
 
 }
