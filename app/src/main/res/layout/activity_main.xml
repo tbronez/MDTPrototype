@@ -68,7 +68,7 @@
             android:layout_marginStart="1dp" />
 
         <TextView
-            android:text="BPM"
+            android:text="@string/BPM"
             android:textSize="20sp"
             android:textColor="@color/dark_grey"
             android:layout_width="wrap_content"

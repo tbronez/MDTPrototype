@@ -9,6 +9,8 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import java.text.DateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -20,12 +22,13 @@ public class FakeHeartRateData extends Service {
     /*public FakeHeartRateData() {
         super("FakeHeartRateData");
     }*/
-    public int fakeHeartRate=60;
+    public int fakeHeartRate=45;
     public Boolean notStarted = true;
     public Intent intent2 = new Intent("heartrate");
     private Timer timer = new Timer();
-    private static final long UPDATE_INTERVAL = 2 * 1000;
+    private static final long UPDATE_INTERVAL = 3 * 1000;
     private static final long DELAY_INTERVAL = 0;
+    private Boolean decreasing = true;
 
     @Override
     public void onCreate() {
@@ -49,9 +52,14 @@ public class FakeHeartRateData extends Service {
             }
         } else if (intent.getAction().equals("getData")) {
             intent2.putExtra("heartrate",fakeHeartRate);
-            intent2.putExtra("time", new Date().toLocaleString());
+            Date date = new Date();
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+            String dateString = ""+cal.get(Calendar.MONTH)+"."+cal.get(Calendar.DATE)+"";
+            //String dateString = date.toLocaleString();
+            intent2.putExtra("time", dateString);
             sendBroadcast(intent2);
-            String log = "Intent to get data "+fakeHeartRate;
+            String log = ""+dateString+" "+fakeHeartRate;
             Log.d("tag",log);
         }
         return super.onStartCommand(intent, flags, startId);
@@ -65,14 +73,27 @@ public class FakeHeartRateData extends Service {
     public void startHR() {
 
         timer.scheduleAtFixedRate(
+
                 new TimerTask() {
                     public void run() {
-                        if (fakeHeartRate>30) {
+
+                        if (fakeHeartRate==32) {
+                            decreasing = false;
+                            fakeHeartRate = fakeHeartRate + 1;
+                        } else if(fakeHeartRate==45) {
+                            decreasing = true;
                             fakeHeartRate = fakeHeartRate - 1;
+                        } else if(decreasing) {
+                            fakeHeartRate = fakeHeartRate -1;
                         } else {
-                            fakeHeartRate = fakeHeartRate + 2;
+                            fakeHeartRate = fakeHeartRate +1;
                         }
-                        intent2.putExtra("time", new Date().toLocaleString());
+                        intent2 = new Intent("heartrate");
+                        Date date = new Date();
+                        Calendar cal = Calendar.getInstance();
+                        cal.setTime(date);
+                        String dateString = ""+cal.get(Calendar.MONTH)+"."+cal.get(Calendar.DATE)+"";
+                        intent2.putExtra("time", dateString);
                         intent2.putExtra("heartrate", fakeHeartRate);
                         sendBroadcast(intent2);
                     }
