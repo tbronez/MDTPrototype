@@ -57,7 +57,7 @@ public class DataSummary extends WearableActivity {
     public void addToSymptomCount(String newData) {
         ArrayList<String> dataArrayList = getSymptomCount();
 //        String dataArrayList = getSymptomCount();
-        dataArrayList.add(newData);
+        dataArrayList.add(0,newData);
 //        dataArrayList = dataArrayList+" "+newData;
         String dataString = "";
         for (int i = 0; i < dataArrayList.size(); i++) {

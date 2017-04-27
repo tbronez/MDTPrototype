@@ -81,7 +81,7 @@ public class SymptomActivity extends DataSummary {
         time = intent.getStringExtra("time");
         heartrate = intent.getIntExtra("heartrate",1);
         data = time+": "+heartrate;
-        preview.setText(data);
+        preview.setText(data+"心率");
     }
 
     public void clearLog(View v) {

@@ -33,6 +33,7 @@
     <Button
         android:id="@+id/clearButton"
         android:text="Clear log"
+        android:background="@null"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:onClick="clearLog"
@@ -45,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
-        android:text="Log Discomfort"
+        android:text="@string/log"
         android:layout_above="@+id/center_line"
         android:layout_marginBottom="40dp"
         android:layout_centerHorizontal="true" />
@@ -68,7 +69,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
-        android:text="Back"
+        android:text="@string/back"
         android:layout_above="@+id/clearButton"
         android:layout_centerHorizontal="true" />
 

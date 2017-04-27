@@ -4,4 +4,10 @@
     <string name="heart_rate_loading">Heart Rate...</string>
     <string name="press">Press to log symptom</string>
     <string name="menu">Menu</string>
+    <string name="BPM">心率</string>
+    <string name="log">记录症状</string>
+    <string name="discomfort">症状</string>
+    <string name="back">返回</string>
+    <string name="month">月</string>
+    <string name="day">日</string>
 </resources>
