@@ -70,7 +70,7 @@ public class SymptomActivity extends DataSummary {
         super.addToSymptomCount(data);
         Vibrator vb = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
         vb.vibrate(200);
-        Toast.makeText(this, "Symptom Logged!", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "症状已记录", Toast.LENGTH_LONG).show();
         toClipboard();
 
 
