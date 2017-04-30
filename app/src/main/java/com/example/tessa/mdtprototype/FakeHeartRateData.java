@@ -26,7 +26,7 @@ public class FakeHeartRateData extends Service {
     public Boolean notStarted = true;
     public Intent intent2 = new Intent("heartrate");
     private Timer timer = new Timer();
-    private static final long UPDATE_INTERVAL = 3 * 1000;
+    private static final long UPDATE_INTERVAL = 10 * 1000;
     private static final long DELAY_INTERVAL = 0;
     private Boolean decreasing = true;
 
@@ -55,7 +55,7 @@ public class FakeHeartRateData extends Service {
             Date date = new Date();
             Calendar cal = Calendar.getInstance();
             cal.setTime(date);
-            String dateString = ""+cal.get(Calendar.MONTH)+"."+cal.get(Calendar.DATE)+"";
+            String dateString = ""+cal.get(Calendar.YEAR)+"."+cal.get(Calendar.MONTH)+"."+cal.get(Calendar.DATE)+"";
             //String dateString = date.toLocaleString();
             intent2.putExtra("time", dateString);
             sendBroadcast(intent2);
@@ -92,7 +92,7 @@ public class FakeHeartRateData extends Service {
                         Date date = new Date();
                         Calendar cal = Calendar.getInstance();
                         cal.setTime(date);
-                        String dateString = ""+cal.get(Calendar.MONTH)+"."+cal.get(Calendar.DATE)+"";
+                        String dateString = ""+cal.get(Calendar.YEAR)+"."+cal.get(Calendar.MONTH)+"."+cal.get(Calendar.DATE)+"";
                         intent2.putExtra("time", dateString);
                         intent2.putExtra("heartrate", fakeHeartRate);
                         sendBroadcast(intent2);

@@ -44,7 +44,7 @@ public class ClipboardActivity extends SymptomActivity {
         dataArrayList = super.getSymptomCount();
         //    String mystring = super.getSymptomCount();
         //    dataArrayList.add(mystring);
-        arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dataArrayList);
+        arrayAdapter = new ArrayAdapter<String>(this, R.layout.custom_textview, dataArrayList);
         clipboardListView.setAdapter(arrayAdapter);
 
 //        rl.removeAllViews();
