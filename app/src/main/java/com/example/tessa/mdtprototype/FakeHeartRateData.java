@@ -55,7 +55,8 @@ public class FakeHeartRateData extends Service {
             Date date = new Date();
             Calendar cal = Calendar.getInstance();
             cal.setTime(date);
-            String dateString = ""+cal.get(Calendar.YEAR)+"."+cal.get(Calendar.MONTH)+"."+cal.get(Calendar.DATE)+"";
+            int month = cal.get(Calendar.MONTH)+1;
+            String dateString = ""+cal.get(Calendar.YEAR)+"."+month+"."+cal.get(Calendar.DATE)+"";
             //String dateString = date.toLocaleString();
             intent2.putExtra("time", dateString);
             sendBroadcast(intent2);
@@ -92,7 +93,8 @@ public class FakeHeartRateData extends Service {
                         Date date = new Date();
                         Calendar cal = Calendar.getInstance();
                         cal.setTime(date);
-                        String dateString = ""+cal.get(Calendar.YEAR)+"."+cal.get(Calendar.MONTH)+"."+cal.get(Calendar.DATE)+"";
+                        int month = cal.get(Calendar.MONTH)+1;
+                        String dateString = ""+cal.get(Calendar.YEAR)+"."+month+"."+cal.get(Calendar.DATE)+"";
                         intent2.putExtra("time", dateString);
                         intent2.putExtra("heartrate", fakeHeartRate);
                         sendBroadcast(intent2);
