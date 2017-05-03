@@ -70,7 +70,7 @@ public class SymptomActivity extends DataSummary {
         super.addToSymptomCount(data);
         Vibrator vb = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
         vb.vibrate(200);
-        Toast.makeText(this, "症状已记录", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, R.string.logged, Toast.LENGTH_LONG).show();
         toClipboard();
 
 
@@ -80,8 +80,8 @@ public class SymptomActivity extends DataSummary {
         unregisterReceiver(broadcastReceiver);
         time = intent.getStringExtra("time");
         heartrate = intent.getIntExtra("heartrate",1);
-        data = time+". "+heartrate;
-        preview.setText(data+" 心率");
+        data = time+": "+heartrate;
+        preview.setText(data+this.getString(R.string.BPM));
     }
 
     public void clearLog(View v) {

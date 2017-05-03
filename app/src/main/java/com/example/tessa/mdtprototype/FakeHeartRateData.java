@@ -57,7 +57,6 @@ public class FakeHeartRateData extends Service {
             cal.setTime(date);
             int month = cal.get(Calendar.MONTH)+1;
             String dateString = ""+cal.get(Calendar.YEAR)+"."+month+"."+cal.get(Calendar.DATE)+"";
-            //String dateString = date.toLocaleString();
             intent2.putExtra("time", dateString);
             sendBroadcast(intent2);
             String log = ""+dateString+" "+fakeHeartRate;
